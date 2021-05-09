@@ -11,18 +11,35 @@
   </head>
 
   <body>
-    <% if admin_signed_in? %>
-      <ul>
-        <li><%= link_to 'Submit post', new_post_path %></li>
-        <li><%= link_to 'Account', edit_admin_registration_path %></li>
-        <li><%= link_to 'Sign out', destroy_admin_session_path, method: :delete %></li>
-      </ul>
-    <% else %>
-      <ul>
-        <li><%= link_to 'Sign up', new_admin_registration_path %></li>
-        <li><%= link_to 'Sign in', new_admin_session_path %></li>
-      </ul>
-    <% end %>
+    <nav class="bg-gray-300">
+      <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+          <div class="absolute inset-y-0 left-0 flex items-center">
+          </div>
+          <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex-shrink-0 flex items-center">
+            <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+            <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow">
+          </div>
+          <div class="hidden sm:block sm:ml-6">
+            <div class="flex space-x-4">
+              <% if admin_signed_in? %>
+                <ul class="flex text-white-300 hover:text-white px-3 py-2 rounded-md text-lg">
+                  <li class="px-5"><%= link_to 'Submit post', new_post_path %></li>
+                  <li class="px-5"><%= link_to 'Account', edit_admin_registration_path %></li>
+                  <li class="px-5"><%= link_to 'Sign out', destroy_admin_session_path, method: :delete %></li>
+                </ul>
+              <% else %>
+                <ul class="flex">
+                  <li class="block px-4 py-2 text-sm text-gray-700"><%= link_to 'Sign up', new_admin_registration_path %></li>
+                  <li class="block px-4 py-2 text-sm text-gray-700"><%= link_to 'Sign in', new_admin_session_path %></li>
+                </ul>
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </nav>
+
     
     <%= yield %>
   </body>
