@@ -11,7 +11,18 @@
   </head>
 
   <body>
-    
+    <% if admin_signed_in? %>
+      <ul>
+        <li><%= link_to 'Submit post', new_post_path %></li>
+        <li><%= link_to 'Account', edit_admin_registration_path %></li>
+        <li><%= link_to 'Sign out', destroy_admin_session_path, method: :delete %></li>
+      </ul>
+    <% else %>
+      <ul>
+        <li><%= link_to 'Sign up', new_admin_registration_path %></li>
+        <li><%= link_to 'Sign in', new_admin_session_path %></li>
+      </ul>
+    <% end %>
     
     <%= yield %>
   </body>
